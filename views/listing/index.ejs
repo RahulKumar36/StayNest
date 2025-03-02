@@ -1,0 +1,104 @@
+<%layout("layouts/boilerplate")%>
+
+<style>
+    #filters{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-left: 1rem;
+    }
+    .filter{
+        text-align: center;
+        margin-right: 2rem;
+        margin-top: 1rem;
+        opacity: 0.7;
+    }
+    .filter:hover{
+        opacity: 1;
+        cursor: pointer;
+    }
+    .filter p {
+        font-size: 1rem;
+    }
+    .tax-info{
+        display: none;
+    }
+    .tax-toggle{
+        border: 1px solid black;
+        border-radius: 1rem;
+        height: 2.5rem;
+        padding: 0.5rem;
+        margin-left: 1rem;
+        display: flex;
+        align-items: center;
+    }
+</style>
+
+    <body>
+       <div id="filters">
+        <div class="filter">
+            <div><i class="fa-solid fa-fire"></i></div>
+            <p>Trending</p>
+        </div>
+        <div class="filter">
+            <div><i class="fa-solid fa-bed"></i></div>
+            <p>Rooms</p>
+        </div>
+        <div class="filter">
+            <div><i class="fa-solid fa-tree"></i></div>
+            <p>Forest</p>
+        </div>
+        <div class="filter">
+                <div><i class="fa-solid fa-snowflake"></i></i></div>
+                <p>Artic</p>
+        </div>
+        <div class="filter">
+                <div><i class="fa-solid fa-person-swimming"></i></div>
+                <p>Pools</p>
+        </div>
+            <div class="filter">
+                <div><i class="fa-solid fa-umbrella-beach"></i></div>
+                 <p>Beach</p>
+            </div>
+            <div class="filter">
+                <div><i class="fa-solid fa-mountain-sun"></i></div>
+                    <p>Mountains</p>
+                </div>
+             <div class="filter">
+                <div><i class="fa-solid fa-face-laugh-beam"></i></div>
+                <p>Activity</p>
+            </div>
+            <div class="filter">
+                <div><i class="fa-solid fa-list-ul"></i></div>
+                    <p>Explore</p>
+                </div>
+            
+
+            <div class="tax-toggle">
+                <div class="form-check-reverse form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Display total after taxes</label>
+                  </div>
+            </div>
+
+       </div>
+        <div class="row row-cols-md-2 row-cols-lg-3 row-cols-sm-1 mt-2">
+            <%for(let listing of allListings){%>
+            <a href="/listings/<%=listing.id%>" class="listing-link">
+                <div class="card col listing-card" >
+                    <img src="<%=listing.image%>" class="card-img-top" alt="listing-image">
+                    <div class="card-img-overlay"></div>
+                    <div class="card-body">
+                        <p class="card-text">
+                          <b>  <%=listing.title%> </b> <br>
+                            &#8377; <%=listing.price.toLocaleString("en-IN")%>
+                            <i class="tax-info"> &nbsp; &nbsp; +18% Tax</i>
+                        </p>
+                    </div>
+                </div>
+            </a>
+                <% } %>
+        </div>
+       
+
+</body>
